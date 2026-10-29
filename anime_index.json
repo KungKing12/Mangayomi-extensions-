@@ -1,3 +1,4 @@
+
 [
   {
     "name": "Hanime.tv",
@@ -12,7 +13,7 @@
     "hasCloudflare": false,
     "sourceCodeUrl": "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/javascript/anime/src/en/hanime.js",
     "apiUrl": "",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "isManga": false,
     "itemType": 1,
     "isFullData": false,
