@@ -12,7 +12,7 @@ const mangayomiSources = [
     hasCloudflare: false,
     sourceCodeUrl: "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/javascript/anime/src/en/hanime.js",
     apiUrl: "",
-    version: "0.1.0",
+    version: "0.1.4",
     isManga: false,
     itemType: 1,
     isFullData: false,
