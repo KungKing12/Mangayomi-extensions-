@@ -90,9 +90,10 @@ class DefaultExtension extends MProvider {
         "Content-Type": "application/json;charset=UTF-8"
       });
       const response = await this.client.post(
-        this.searchApi,
-        headers,
-        JSON.stringify(payload)
+  this.searchApi,
+  headers,
+  payload
+);
       );
       const result = JSON.parse(response.body || "{}");
       let hits = result.hits || [];
