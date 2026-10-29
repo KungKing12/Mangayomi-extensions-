@@ -1,17 +1,24 @@
-{
-  "name": "Hanime.tv",
-  "id": 1938274611,
-  "baseUrl": "https://hanime.tv",
-  "lang": "en",
-  "typeSource": "single",
-  "iconUrl": "https://www.google.com/s2/favicons?sz=256&domain=hanime.tv",
-  "isNsfw": true,
-  "version": "0.1.1",
-  "sourceCodeUrl": "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/javascript/anime/src/en/hanime.js",
-  "pkgPath": "anime/src/en/hanime.js",
-  "isManga": false,
-  "itemType": 1,
-  "isFullData": false,
-  "appMinVerReq": "0.5.0",
-  "sourceCodeLanguage": 1
-}
+[
+  {
+    "name": "Hanime.tv",
+    "id": 1938274611,
+    "baseUrl": "https://hanime.tv",
+    "lang": "en",
+    "typeSource": "single",
+    "iconUrl": "https://www.google.com/s2/favicons?sz=256&domain=hanime.tv",
+    "dateFormat": "",
+    "dateFormatLocale": "",
+    "isNsfw": true,
+    "hasCloudflare": false,
+    "sourceCodeUrl": "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/javascript/anime/src/en/hanime.js",
+    "apiUrl": "",
+    "version": "0.1.2",
+    "isManga": false,
+    "itemType": 1,
+    "isFullData": false,
+    "appMinVerReq": "0.5.0",
+    "additionalParams": "",
+    "sourceCodeLanguage": 1,
+    "notes": "Hanime.tv source for adults (18+)."
+  }
+]
