@@ -11,7 +11,7 @@ const mangayomiSources = [
     dateFormatLocale: "",
     isNsfw: true,
     hasCloudflare: false,
-    sourceCodeUrl: "",
+    sourceCodeUrl: "https://github.com/KungKing12/Mangayomi-extensions-/blob/main/anime_index.json",
     apiUrl: "",
     version: "0.1.0",
     isManga: false,
