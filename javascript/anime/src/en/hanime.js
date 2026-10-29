@@ -1,4 +1,4 @@
-const mangayomiSources = [
+  const mangayomiSources = [
   {
     name: "Hanime.tv",
     id: 1938274611,
@@ -32,6 +32,58 @@ class DefaultExtension extends MProvider {
     this.searchApi = "https://hanime.tv/api/v8/search";
     this.videoApi = "https://hanime.tv/api/v8/video?id=";
   }
+
+  
+async _getTrending(page) {
+  const currentPage = Math.max((Number(page) || 1) - 1, 0);
+
+  const url =
+    `${this.base}/api/v8/browse-trending?time=month&page=${currentPage}`;
+
+  let signature = "";
+  const chars = "0123456789abcdef";
+
+  for (let i = 0; i < 64; i++) {
+    signature += chars[Math.floor(Math.random() * chars.length)];
+  }
+
+  const headers = {
+    ...this.getHeaders(this.base + "/"),
+    "X-Signature-Version": "web2",
+    "X-Signature": signature
+  };
+
+  const response = await this.client.get(url, headers);
+  const data = JSON.parse(response.body || "{}");
+
+  const hits = Array.isArray(data.hentai_videos)
+    ? data.hentai_videos
+    : [];
+
+  const list = hits.map((item) => {
+    const slug = item.slug || "";
+    const name = item.name || item.title || slug;
+    const link = slug
+      ? `${this.base}/videos/hentai/${slug}`
+      : "";
+
+    return {
+      name: name,
+      url: link,
+      link: link,
+      imageUrl:
+        item.poster_url ||
+        item.cover_url ||
+        item.thumbnail_url ||
+        ""
+    };
+  }).filter((item) => item.name && item.link);
+
+  return {
+    list: list,
+    hasNextPage: list.length > 0
+  };
+}
 
   getHeaders(url) {
     return {
@@ -128,9 +180,19 @@ const list = hits.map((item) => {
     }
   }
 
-  async getPopular(page) {
-    return await this._searchPage("", page, "views", "desc");
+  
+async getPopular(page) {
+  try {
+    return await this._getTrending(page);
+  } catch (error) {
+    console.log("Hanime.tv trending error: " + String(error));
+    return {
+      list: [],
+      hasNextPage: false
+    };
   }
+}
+
 
   async getLatestUpdates(page) {
     return await this._searchPage("", page, "created_at_unix", "desc");
