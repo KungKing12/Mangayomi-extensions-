@@ -93,22 +93,31 @@ class DefaultExtension extends MProvider {
   this.searchApi,
   headers,
   payload
-);
       );
       const result = JSON.parse(response.body || "{}");
       let hits = result.hits || [];
       if (typeof hits === "string") hits = JSON.parse(hits || "[]");
       if (!Array.isArray(hits)) hits = [];
 
-      const list = hits.map((item) => {
-        const slug = item.slug || item.id || "";
-        const name = item.name || item.title || slug;
-        return {
-          name: name,
-          link: this._videoPageUrl(slug),
-          imageUrl: item.poster_url || item.cover_url || item.thumbnail_url || item.thumbnail || ""
-        };
-      }).filter((item) => item.link && item.name);
+      
+const list = hits.map((item) => {
+  const slug = item.slug || item.id || "";
+  const name = item.name || item.title || slug;
+  const videoUrl = this._videoPageUrl(slug);
+
+  return {
+    name: name,
+    url: videoUrl,
+    link: videoUrl,
+    imageUrl:
+      item.poster_url ||
+      item.cover_url ||
+      item.thumbnail_url ||
+      item.thumbnail ||
+      ""
+  };
+}).filter((item) => item.name && item.link);
+
 
       const totalPages = Number(result.nbPages || result.nb_pages || 0);
       const hasNextPage = totalPages > 0 ? currentPage + 1 < totalPages : list.length > 0;
