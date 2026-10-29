@@ -7,7 +7,7 @@
   "iconUrl": "https://www.google.com/s2/favicons?sz=256&domain=hanime.tv",
   "isNsfw": true,
   "version": "0.1.1",
-  "sourceCodeUrl": "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/anime_index.json",
+  "sourceCodeUrl": "https://raw.githubusercontent.com/Kungking12/hanime-mangayomi/main/hanime.js",
   "pkgPath": "anime/src/en/hanime.js",
   "isManga": false,
   "itemType": 1,
