@@ -12,7 +12,7 @@ const mangayomiSources = [
     hasCloudflare: false,
     sourceCodeUrl: "https://raw.githubusercontent.com/KungKing12/Mangayomi-extensions-/main/javascript/anime/src/en/hanime.js",
     apiUrl: "",
-    version: "0.1.4",
+    version: "0.1.5",
     isManga: false,
     itemType: 1,
     isFullData: false,
@@ -29,7 +29,7 @@ class DefaultExtension extends MProvider {
     super();
     this.client = new Client();
     this.base = "https://hanime.tv";
-    this.searchApi = "https://search.htv-services.com/";
+    this.searchApi = "https://hanime.tv/api/v8/search";
     this.videoApi = "https://hanime.tv/api/v8/video?id=";
   }
 
@@ -75,15 +75,15 @@ class DefaultExtension extends MProvider {
   async _searchPage(query, page, orderBy, ordering) {
     const currentPage = Math.max((Number(page) || 1) - 1, 0);
     const payload = {
-      blacklist: [],
-      brands: [],
-      order_by: orderBy || "views",
-      ordering: ordering || "desc",
-      page: currentPage,
-      search_text: String(query || "").trim(),
-      tags: [],
-      tags_mode: "AND"
-    };
+  blacklist: [],
+  brands: [],
+  order_by: orderBy || "views",
+  ordering: ordering || "desc",
+  page: currentPage,
+  search_text: String(query || "").trim(),
+  tags: [],
+  tags_mode: "AND"
+};
 
     try {
       const headers = Object.assign({}, this.getHeaders(this.searchApi), {
